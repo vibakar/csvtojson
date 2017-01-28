@@ -2,7 +2,7 @@ const fs = require('fs');
 const rl = require('readline');
 
 var rd = rl.createInterface({
-    input: fs.createReadStream('csv/Indicators.csv'),
+    input: fs.createReadStream('../inputdata/Indicators.csv'),
     output: process.stdout,
     terminal: false
 });
@@ -12,7 +12,7 @@ var countries = ["India", "China", "Pakistan", "Thailand", "Singapore"];
 for (c = 0; c < countries.length; c++) {
     var obj = {
         countries: countries[c],
-        total: 0
+        highest_life_expectancy: 0
     };
     arr.push(obj);
 }
@@ -24,13 +24,13 @@ rd.on('line', function(data) {
 
             if (line[0] == countries[j] && line[3] == "SP.DYN.LE00.IN" && line[4] == y) {
 
-                arr[j].total += Number(Math.round(line[5]));
+                arr[j].highest_life_expectancy += Number(Math.round(line[5]));
             }
         }
     }
 });
 
 rd.on('close', function() {
-    fs.writeFile('json/conversion3.json', JSON.stringify(arr));
+    fs.writeFile('../outputdata/life_expectancy_birth.json', JSON.stringify(arr));
     console.log('Done');
 });

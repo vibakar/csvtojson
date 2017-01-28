@@ -9,7 +9,7 @@ for(var i=1960;i<2016;i++){
 }
 
 var rd = rl.createInterface({
-    input: fs.createReadStream('csv/Indicators.csv'),
+    input: fs.createReadStream('../inputdata/Indicators.csv'),
     output: process.stdout,
     terminal: false
 });
@@ -31,6 +31,6 @@ rd.on('line', function(data) {
 });
 
 rd.on('close', function() {
-    fs.writeFile('json/conversion2.json', JSON.stringify(arr));
+    fs.writeFile('../outputdata/birth_death_rate.json', JSON.stringify(arr));
     console.log('Done');
 });

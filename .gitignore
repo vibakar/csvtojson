@@ -1,1 +1,7 @@
-csv/
+node_modules/
+inputdata/
+test/
+.babelrc
+.eslintrc.js
+gulpfile.js
+log4js.conf.json
