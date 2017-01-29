@@ -1,6 +1,5 @@
 node_modules/
 inputdata/
-test/
 .babelrc
 .eslintrc.js
 gulpfile.js
