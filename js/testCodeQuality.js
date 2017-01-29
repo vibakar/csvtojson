@@ -1,11 +1,11 @@
-let check = function(year) {
+let check = function(y) {
     const fs = require('fs');
     const rl = require('readline');
     const logger = require('log4js').getLogger();
-    if (!year) {
+    if (!y) {
         throw Error('Not a number');
     }
-    if (typeof year !== 'number') {
+    if (typeof y !== 'number') {
         throw Error('Not a number');
     }
 
@@ -32,10 +32,11 @@ let check = function(year) {
             'Philippines', 'Israel', 'Sri Lanka', 'Indonesia', 'Iraq'
         ];
 
-        for (let y = '1960'; y < '2014'; y = y + 1) {
+        for (let y = 1960; y < 2014; y = y + 1) {
             for (let c = 0; c < countries.length; c = c + 1) {
                 let p = Number(line[4]) - 1960;
-                if (line[4] === y && line[3] === 'SP.DYN.LE00.MA.IN' && line[0] === countries[c]) {
+                if (line[4] === y && line[3] === 'SP.DYN.LE00.MA.IN'
+                && line[0] === countries[c]) {
                     arr[p].male = arr[p].male + Number(Math.round(line[5]));
                 }
                 if (line[4] === y && line[3] === 'SP.DYN.LE00.FE.IN' && line[0] ===
