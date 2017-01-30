@@ -9,7 +9,6 @@ var actualJSON = require('../outputdata/male_female_life_expectancy.json');
 describe('Test Application as Blackbox', function(){
 
   it('Test JSON is well formed', function(done){
-    
     done();
   });
 

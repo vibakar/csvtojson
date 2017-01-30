@@ -1,7 +1,7 @@
 const fs = require('fs');
 const rl = require('readline');
 
-//creating empty array of objects
+//  creating empty array of objects
 let arr = [];
 for (let i = 1960; i < 2014; i = i + 1) {
     let obj = {
@@ -12,16 +12,16 @@ for (let i = 1960; i < 2014; i = i + 1) {
     arr.push(obj);
 }
 
-//setting the input file path
+//  setting the input file path
 let rd = rl.createInterface({
     input: fs.createReadStream('../inputdata/Indicators.csv'),
     output: process.stdout,
     terminal: false
 });
 
-//reading each line from csv file
+//  reading each line from csv file
 rd.on('line', function(data) {
-//splitting each line to get each column value
+//  splitting each line to get each column value
     let line = data.trim().split(/,(?=(?:(?:[^']*'){2})*[^']*$)/);
     let countries = ['India', 'China', 'Pakistan', 'Thailand', 'Singapore', 'Philippines',
         'Israel', 'Sri Lanka', 'Indonesia', 'Iraq'
@@ -41,7 +41,7 @@ rd.on('line', function(data) {
     }
 });
 
-//writing generated json to new file
+//  writing generated json to new file
 rd.on('close', function() {
     fs.writeFile('../outputdata/male_female_life_expectancy.json', JSON.stringify(arr));
 });
